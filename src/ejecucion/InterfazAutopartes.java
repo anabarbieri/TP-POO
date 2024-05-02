@@ -4,12 +4,14 @@ public class InterfazAutopartes {
 	public static ListadoAutopartes autoparte;
 	
 	public static void main(String[] args) {
+		Scanner scanner = new Scanner(System.in);
 		// TODO Auto-generated method stub
 		autoparte = new ListadoAutopartes();
-		cargarAutopartes();
+		cargarAutopartes(scanner);
+		darDeBajaAutoparte(scanner);
+        scanner.close(); // Cierra el Scanner al final de la ejecución
 	}
-	public static void cargarAutopartes() {
-		Scanner scanner = new Scanner(System.in);
+	public static void cargarAutopartes(Scanner scanner) {
 		int codigo;
 		String denominacion;
 		String descripcion;
@@ -55,11 +57,19 @@ public class InterfazAutopartes {
 			}
 			System.out.print(" Ingrese otro codigo o -1 para salir: ");
 			codigo = Integer.parseInt(scanner.nextLine());
-	        
-			
-		
 		}
-		scanner.close();
+		
+		//scanner.close();
 	}
-	
+	public static void darDeBajaAutoparte(Scanner scanner) {
+	    System.out.println("Ingrese el código de la autoparte que desea dar de baja: ");
+	    int codigo = Integer.parseInt(scanner.nextLine());
+	    if (autoparte.darDeBajaAutoparte(codigo)) {
+	        System.out.println("La autoparte con código " + codigo + " ha sido dada de baja exitosamente.");
+	    } else {
+	        System.out.println("No se encontró ninguna autoparte con el código " + codigo + ".");
+	    }
+	}
 }
+
+        

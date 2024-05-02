@@ -22,4 +22,14 @@ public class ListadoAutopartes {
 			return false;
 		}
 	}
+	public boolean darDeBajaAutoparte(int codigo) {
+        for (int i = 0; i < listaAutopartes.size(); i++) {
+            Autoparte el = listaAutopartes.get(i);
+            if (el.getCodigo() == codigo) {
+                listaAutopartes.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }
