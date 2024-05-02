@@ -1,5 +1,6 @@
 package ejecucion;
 
+
 public class Autoparte {
 	private int codigo;
 	private String denominacion;
