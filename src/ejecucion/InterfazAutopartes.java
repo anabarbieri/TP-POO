@@ -9,6 +9,7 @@ public class InterfazAutopartes {
 		autoparte = new ListadoAutopartes();
 		cargarAutopartes(scanner);
 		darDeBajaAutoparte(scanner);
+		modificarAutoparte(scanner);
         scanner.close(); // Cierra el Scanner al final de la ejecución
 	}
 	public static void cargarAutopartes(Scanner scanner) {
@@ -99,6 +100,7 @@ public class InterfazAutopartes {
 		}
 	//scanner.close();
 	}
+	
 	// Método para verificar si una cadena contiene números
     private static boolean contieneNumeros(String cadena) {
         for (char c : cadena.toCharArray()) {
@@ -116,6 +118,122 @@ public class InterfazAutopartes {
 	    } else {
 	        System.out.println("No se encontró ninguna autoparte con el código " + codigo + ".");
 	    }
+	}
+	
+	public static void modificarAutoparte(Scanner scanner) {
+		System.out.println("Ingrese el codigo de la autoparte que quiere modificar: ");
+		int codigo = Integer.parseInt(scanner.nextLine());
+		while (codigo != -1) {
+			Autoparte autoparteAModificar = autoparte.buscarAutoparte(codigo);
+
+			if (autoparteAModificar != null) {
+				System.out.println("Autoparte encontrada: ");
+				System.out.println(autoparteAModificar);
+				
+				try {
+	                System.out.println("Ingrese la nueva denominación de la autoparte:");
+	                String nuevaDenominacion = scanner.nextLine();
+	                while (contieneNumeros(nuevaDenominacion)) {
+	                    System.out.println("Error: La denominación no puede contener números.");
+	                    System.out.print("Ingrese nuevamente la denominación de la autoparte: ");
+	                    nuevaDenominacion = scanner.nextLine();
+	                
+	                }
+	                 autoparteAModificar.setDenominacion(nuevaDenominacion);
+	           
+	            	System.out.println("Ingrese la nueva descripción de la autoparte:");
+		            String nuevaDescripcion = scanner.nextLine();
+		            while (contieneNumeros(nuevaDescripcion)) {
+	                    System.out.println("Error: La descripcion no puede contener números.");
+	                    System.out.print("Ingrese nuevamente la descripcion de la autoparte: ");
+	                    nuevaDescripcion = scanner.nextLine();
+		            }
+	         
+		            autoparteAModificar.setDescripcion(nuevaDescripcion);
+	            
+	            
+		            System.out.println("Ingrese la nueva categoría de la autoparte:");
+		            String nuevaCategoria = scanner.nextLine();
+		            while (contieneNumeros(nuevaCategoria)) {
+	                    System.out.println("Error: La categoria no puede contener números.");
+	                    System.out.print("Ingrese nuevamente la categoria de la autoparte: ");
+	                    nuevaCategoria = scanner.nextLine();
+		            }
+		            autoparteAModificar.setCategoria(nuevaCategoria);
+	            
+	            
+		            System.out.println("Ingrese la nueva marca de la autoparte:");
+		            String nuevaMarca = scanner.nextLine();
+		            while (contieneNumeros(nuevaMarca)) {
+	                    System.out.println("Error: La marca no puede contener números.");
+	                    System.out.print("Ingrese nuevamente la marca de la autoparte: ");
+	                    nuevaMarca = scanner.nextLine();
+		            }
+		            autoparteAModificar.setMarca(nuevaMarca);
+	            
+	            
+		            System.out.println("Ingrese el nuevo vehículo de la autoparte:");
+		            String nuevoVehiculo = scanner.nextLine();
+		            while (contieneNumeros(nuevoVehiculo)) {
+	                    System.out.println("Error: El vehiculo no puede contener números.");
+	                    System.out.print("Ingrese nuevamente el vehiculo de la autoparte: ");
+	                    nuevoVehiculo = scanner.nextLine();
+		            }
+		            autoparteAModificar.setVehiculo(nuevoVehiculo);
+	            
+	            
+		            System.out.println("Ingrese el nuevo modelo de la autoparte:");
+		            String nuevoModelo = scanner.nextLine();
+		            while (contieneNumeros(nuevoModelo)) {
+	                    System.out.println("Error: El modelo no puede contener números.");
+	                    System.out.print("Ingrese nuevamente el modelo de la autoparte: ");
+	                    nuevoModelo = scanner.nextLine();
+		            }
+		            autoparteAModificar.setModelo(nuevoModelo);
+	            
+		            System.out.println("Ingrese el nuevo precio unitario de la autoparte:");
+		            double nuevoPrecioUnitario = Double.parseDouble(scanner.nextLine());
+		            autoparteAModificar.setPrecioUni(nuevoPrecioUnitario);
+	            
+	           
+		            System.out.println("Ingrese el nuevo enlace de la autoparte:");
+		            String nuevoEnlace = scanner.nextLine();
+		            while (contieneNumeros(nuevoEnlace)) {
+	                    System.out.println("Error: El enlace no puede contener números.");
+	                    System.out.print("Ingrese nuevamente el enlace de la autoparte: ");
+	                    nuevoEnlace = scanner.nextLine();
+		            }
+		            autoparteAModificar.setEnlace(nuevoEnlace);
+	            
+		            System.out.println("Ingrese la nueva cantidad de stock de la autoparte:");
+		            int nuevaCantidadStock = Integer.parseInt(scanner.nextLine());
+		            autoparteAModificar.setCantStock(nuevaCantidadStock);
+	            
+		            System.out.println("Ingrese el nuevo stock mínimo de la autoparte:");
+		            int nuevoStockMinimo = Integer.parseInt(scanner.nextLine());
+		            autoparteAModificar.setStockMin(nuevoStockMinimo);
+	            
+		            System.out.println("Autoparte modificada con éxito");
+
+				} catch (NumberFormatException e) {
+	                System.out.println("Error: Debe ingresar un valor numérico válido.");
+	            } catch (IllegalArgumentException e) {
+	                System.out.println(e.getMessage());
+	            }
+	            
+	            
+	        } else {
+	            System.out.println("No se encontró ninguna autoparte con el código " + codigo + ".");
+			}
+	         
+			
+			System.out.print(" Ingrese otro codigo o -1 para salir: ");
+			codigo = Integer.parseInt(scanner.nextLine());
+			
+			if (codigo != -1) {
+				autoparteAModificar = autoparte.buscarAutoparte(codigo);
+			}
+		}
 	}
 }
 

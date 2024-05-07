@@ -32,4 +32,13 @@ public class ListadoAutopartes {
         }
         return false;
     }
+	
+	public Autoparte buscarAutoparte(int codigo) {
+		for (Autoparte autoparte: listaAutopartes) {
+			if (autoparte.getCodigo() == codigo) {
+				return autoparte;
+			}
+		}
+		return null; //Si no se encuentra ninguna autoparte con ese codigo
+	}
 }
