@@ -25,27 +25,66 @@ public class InterfazAutopartes {
 		int stockMin;
 		Autoparte datos;
 		
-		System.out.print("Ingrese el codigo de la autoparte: (-1 para finalizar)");
+		System.out.print("Ingrese el codigo(mayor a 0) de la autoparte: (-1 para finalizar)");
 		codigo = Integer.parseInt(scanner.nextLine());
 		while (codigo != -1) {
 			System.out.print("Ingrese la denominacion de la autoparte: ");
 			denominacion = scanner.nextLine();
+			while (contieneNumeros(denominacion)) {
+                System.out.println("Error: La denominación no puede contener números.");
+                System.out.print("Ingrese nuevamente la denominación de la autoparte: ");
+                denominacion = scanner.nextLine();
+            }
+		
 			System.out.print("Ingrese la descripcion de la autoparte: ");
 			descripcion = scanner.nextLine();
+			while (contieneNumeros(descripcion)) {
+				System.out.println("Error: La descripcion no puede contener números.");
+                System.out.print("Ingrese nuevamente la descripcion de la autoparte: ");
+                descripcion = scanner.nextLine();
+			}
 			System.out.print("Ingrese la categoria de la autoparte: ");
 			categoria = scanner.nextLine();
+			while (contieneNumeros(categoria)) {
+				System.out.println("Error: La categoria no puede contener números.");
+                System.out.print("Ingrese nuevamente la categoria de la autoparte: ");
+                categoria = scanner.nextLine();
+			}
 			System.out.print("Ingrese la marca de la autoparte: ");
 			marca = scanner.nextLine();
+			while (contieneNumeros(marca)) {
+				System.out.println("Error: La marca no puede contener números.");
+                System.out.print("Ingrese nuevamente la marca de la autoparte: ");
+                marca = scanner.nextLine();
+			}
 			System.out.print("Ingrese el vehiculo de la autoparte: ");
 			vehiculo = scanner.nextLine();
+			while (contieneNumeros(vehiculo)) {
+				System.out.println("Error: el vehiculo no puede contener números.");
+                System.out.print("Ingrese nuevamente el vehiculo de la autoparte: ");
+                vehiculo = scanner.nextLine();
+			}
 			System.out.print("Ingrese el modelo de la autoparte: ");
 			modelo = scanner.nextLine();
+			while (contieneNumeros(modelo)) {
+				System.out.println("Error: el modelo no puede contener números.");
+                System.out.print("Ingrese nuevamente el modelo de la autoparte: ");
+                modelo = scanner.nextLine();
+			}
 			System.out.print("Ingrese el precio unitario de la autoparte: ");
 			precioUni = Double.parseDouble(scanner.nextLine());
+						
 			System.out.print("Ingrese el enlace de la autoparte: ");
 			enlace = scanner.nextLine();
+			while (contieneNumeros(enlace)) {
+				System.out.println("Error: el enlace no puede contener números.");
+                System.out.print("Ingrese nuevamente el enlace de la autoparte: ");
+                enlace = scanner.nextLine();
+			}
+			
 			System.out.print("Ingrese la cantidad de stock de la autoparte: ");
 			cantStock = Integer.parseInt(scanner.nextLine());
+			
 			System.out.print("Ingrese el stock minimo de la autoparte: ");
 			stockMin = Integer.parseInt(scanner.nextLine());
 			try {
@@ -58,9 +97,17 @@ public class InterfazAutopartes {
 			System.out.print(" Ingrese otro codigo o -1 para salir: ");
 			codigo = Integer.parseInt(scanner.nextLine());
 		}
-		
-		//scanner.close();
+	//scanner.close();
 	}
+	// Método para verificar si una cadena contiene números
+    private static boolean contieneNumeros(String cadena) {
+        for (char c : cadena.toCharArray()) {
+            if (Character.isDigit(c)) {
+                return true;
+            }
+        }
+        return false;
+    }
 	public static void darDeBajaAutoparte(Scanner scanner) {
 	    System.out.println("Ingrese el código de la autoparte que desea dar de baja: ");
 	    int codigo = Integer.parseInt(scanner.nextLine());
