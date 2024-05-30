@@ -27,6 +27,7 @@ public class Autoparte {
 		this.setEnlace(enlace);
 		this.setCantStock(cantStock);
 		this.setStockMin(stockMin);
+		
 	}
 	public int getCodigo(){
 		return codigo;

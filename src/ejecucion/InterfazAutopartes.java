@@ -1,17 +1,39 @@
 package ejecucion;
 import java.util.*;
 public class InterfazAutopartes {
-	public static ListadoAutopartes autoparte;
+	private static ListadoAutopartes autoparte;
 	
 	public static void main(String[] args) {
 		Scanner scanner = new Scanner(System.in);
 		// TODO Auto-generated method stub
 		autoparte = new ListadoAutopartes();
-		cargarAutopartes(scanner);
-		darDeBajaAutoparte(scanner);
-		modificarAutoparte(scanner);
-        scanner.close(); // Cierra el Scanner al final de la ejecución
+		//cargarAutopartes(scanner);
+		//darDeBajaAutoparte(scanner);
+		//modificarAutoparte(scanner);
+        
+        String var = "";
+        do {
+			System.out.print("Ingrese a-agregar, b-modificar, c-eliminar y d-listado");
+			var= scanner.nextLine();
+			if (var.equals("a")) {
+				cargarAutopartes(scanner);
+			}else if (var.equals("b")) {
+				darDeBajaAutoparte(scanner);
+			}else if (var.equals("c")){
+				modificarAutoparte(scanner);
+			}else if(var.equals("d")) {
+				listarAutopartes();
+			}
+		}while(!var.equals("s"));
+        //scanner.close(); // Cierra el Scanner al final de la ejecución
 	}
+	
+	public static void listarAutopartes() {
+		for (Autoparte auto : autoparte.getListaAutopartes()) {
+			System.out.println("LISTADO: " + " Codigo: " + auto.getCodigo() + " Descripcion: " + auto.getDescripcion()  + " Categoria: " + auto.getCategoria() + " Marca: " +auto.getMarca() + " Vehiculo: " + auto.getVehiculo() + " Modelo: " +auto.getModelo() + " Precio Unitario: " +auto.getPrecioUni() + " Enlace: " +auto.getEnlace() + " Cantidad Stock: " +auto.getCantStock()+ " Stock Minimo: " +auto.getStockMin());
+		}
+	}
+
 	public static void cargarAutopartes(Scanner scanner) {
 		int codigo;
 		String denominacion;
@@ -25,6 +47,7 @@ public class InterfazAutopartes {
 		int cantStock;
 		int stockMin;
 		Autoparte datos;
+		
 		
 		System.out.print("Ingrese el codigo(mayor a 0) de la autoparte: (-1 para finalizar)");
 		codigo = Integer.parseInt(scanner.nextLine());

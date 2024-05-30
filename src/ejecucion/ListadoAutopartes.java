@@ -4,7 +4,17 @@ public class ListadoAutopartes {
 	ArrayList <Autoparte> listaAutopartes;
 	public ListadoAutopartes(){
 		listaAutopartes = new ArrayList<Autoparte>();
+		
 	}
+	
+	public ArrayList<Autoparte> getListaAutopartes() {
+		return listaAutopartes;
+	}
+	public void setListaAutopartes(ArrayList<Autoparte> listaAutopartes) {
+		this.listaAutopartes = listaAutopartes;
+	}
+	
+	
 	private boolean ValidarAutoparte(Autoparte datos) {
 		for (int i = 0; i< listaAutopartes.size(); i++) { //va a estar en el ciclo mientras que i sea menor que el tamaño de la lista
 			Autoparte el = listaAutopartes.get(i);//voy guardando en el el valor de i que accedo de la lista
@@ -41,4 +51,6 @@ public class ListadoAutopartes {
 		}
 		return null; //Si no se encuentra ninguna autoparte con ese codigo
 	}
+	
+	
 }
